@@ -290,3 +290,32 @@ body {
   margin-bottom: 0;
 }
 
+@media (max-width: 340px) {
+  .auth-screen {
+    padding: 18px 2vw 12px;
+  }
+  .auth-card {
+    padding: 8px 2vw 10px 2vw;
+    border-radius: 9px;
+    max-width: 99vw;
+    min-width: 0;
+    box-sizing: border-box;
+  }
+  .auth-title {
+    font-size: 1em;
+  }
+  .auth-brand .brand-mark {
+    font-size: 26px;
+  }
+  .auth-brand .brand-title {
+    font-size: 16px;
+  }
+  .auth-screen .btn, .auth-screen .auth-card .tablink {
+    padding: 10px 6px;
+    font-size: 0.97em;
+  }
+  .auth-screen .input, .auth-screen .input-lg {
+    padding: 10px 8px;
+    font-size: 0.97em;
+  }
+}
