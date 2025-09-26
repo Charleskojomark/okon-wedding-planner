@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Computerized Wedding Planning System</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="topbar">
+        <button id="brandBtn" class="brand" aria-label="Go to Dashboard">
+            <span class="logo" aria-hidden="true">💗</span>
+            <span class="brand-name">Wedding Planner</span>
+        </button>
+        <nav class="navbar">
+            <button class="nav-link active" data-tab="dashboard">Dashboard</button>
+            <button class="nav-link" data-tab="guests">Guests</button>
+            <button class="nav-link" data-tab="vendors">Vendors</button>
+            <button class="nav-link" data-tab="schedule">Schedule</button>
+            <button class="nav-link" data-tab="budget">Budget</button>
+        </nav>
+        <div class="nav-actions">
+            <div class="menu">
+                <button id="menuBtn" class="btn pill" aria-haspopup="true" aria-expanded="false">☰</button>
+                <div id="menuPanel" class="menu-panel" role="menu" aria-hidden="true">
+                    <button id="exportBtn" class="menu-item" role="menuitem">Export</button>
+                    <label for="importInput" class="menu-item" role="menuitem">Import</label>
+                    <input id="importInput" type="file" accept="application/json" hidden>
+                    <button id="clearAllBtn" class="menu-item danger" role="menuitem">Reset</button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="content">
+            <div id="toast" role="status" aria-live="polite"></div>
+
+            <section id="tab-dashboard" class="tab active">
+                <section class="hero">
+                    <div class="hero-content">
+                        <h1>Wedding Planner</h1>
+                        <p>Your dream wedding, beautifully planned</p>
+                    </div>
+                </section>
+                <div id="dashboardMetrics" class="metrics-grid"></div>
+                <div class="grid-2">
+                    <div class="card block">
+                        <h3>Planning Progress</h3>
+                        <div class="progress"><div id="progressBar" class="progress-bar" style="width:0%"></div></div>
+                        <div class="meta" id="progressMeta">0 of 0 tasks completed</div>
+                    </div>
+                    <div class="card block">
+                        <h3>Budget Overview</h3>
+                        <div class="progress"><div id="budgetBar" class="progress-bar" style="width:0%"></div></div>
+                        <div class="meta" id="budgetMeta">Budget Used 0%</div>
+                    </div>
+                </div>
+                <div class="quick-actions card block">
+                    <h3>Quick Actions</h3>
+                    <div class="qa-row">
+                        <button id="qaGuests" class="btn xl primary">Manage Guests</button>
+                        <button id="qaBudget" class="btn xl">Track Budget</button>
+                        <button id="qaVendors" class="btn xl">Find Vendors</button>
+                        <button id="qaSchedule" class="btn xl">Plan Timeline</button>
+                    </div>
+                </div>
+            </section>
+
+            <section id="tab-guests" class="tab" aria-labelledby="Guests">
+                <header class="section-header">
+                    <h2>Guest Management</h2>
+                    <div class="actions-row">
+                        <input id="guestSearch" class="input" placeholder="Search guests by name...">
+                        <button id="addGuestBtn" class="btn">Add Guest</button>
+                    </div>
+                </header>
+                <div id="guestStats" class="metrics-grid small"></div>
+                <div id="guestList" class="list"></div>
+                <button id="fabGuests" class="fab" aria-label="Add Guest">＋</button>
+            </section>
+
+            <section id="tab-vendors" class="tab" aria-labelledby="Vendors">
+                <header class="section-header">
+                    <h2>Vendors</h2>
+                    <div class="actions-row">
+                        <input id="vendorSearch" class="input" placeholder="Search vendors by name/category...">
+                        <button id="addVendorBtn" class="btn">Add Vendor</button>
+                    </div>
+                </header>
+                <div id="vendorList" class="list"></div>
+                <button id="fabVendors" class="fab" aria-label="Add Vendor">＋</button>
+            </section>
+
+            <section id="tab-budget" class="tab" aria-labelledby="Budget">
+                <header class="section-header">
+                    <h2>Budget Tracker</h2>
+                </header>
+                <div id="budgetStats" class="metrics-grid"></div>
+                <div class="card block">
+                    <h3>Set Total Budget</h3>
+                    <div class="actions-row">
+                        <input id="totalBudgetInput" class="input" placeholder="Enter your total budget" inputmode="decimal">
+                        <button id="updateTotalBudgetBtn" class="btn">Update Budget</button>
+                    </div>
+                </div>
+                <div class="card block">
+                    <div class="actions-row">
+                        <input id="budgetItemName" class="input" placeholder="Item name">
+                        <input id="budgetPlanned" class="input" placeholder="Planned (₦)" inputmode="decimal">
+                        <input id="budgetActual" class="input" placeholder="Actual (₦)" inputmode="decimal">
+                        <button id="addBudgetItemBtn" class="btn">Add Budget Item</button>
+                    </div>
+                </div>
+                <div id="budgetList" class="list"></div>
+                <button id="fabBudget" class="fab" aria-label="Add Budget Item">＋</button>
+            </section>
+
+            <section id="tab-schedule" class="tab" aria-labelledby="Schedule">
+                <header class="section-header">
+                    <h2>Schedule</h2>
+                    <div class="actions-row">
+                        <input id="taskName" class="input" placeholder="Task">
+                        <input id="taskDue" class="input" type="date">
+                        <button id="addTaskBtn" class="btn">Add Task</button>
+                    </div>
+                </header>
+                <div id="taskList" class="list"></div>
+                <button id="fabSchedule" class="fab" aria-label="Add Task">＋</button>
+            </section>
+
+            <section id="tab-about" class="tab" aria-labelledby="Help">
+                <header class="section-header">
+                    <h2>Help & About</h2>
+                </header>
+                <div class="prose">
+                    <p>This offline-first planner stores data in your browser. Use Export/Import to move data between devices.</p>
+                    <ul>
+                        <li><strong>Guests</strong>: Add names, contact, RSVP, and side (Bride/Groom).</li>
+                        <li><strong>Vendors</strong>: Track category, contact, cost notes.</li>
+                        <li><strong>Budget</strong>: Enter planned vs actual, see totals and remaining.</li>
+                        <li><strong>Schedule</strong>: Create tasks with due dates and completion.
+                        </li>
+                    </ul>
+                </div>
+            </section>
+        </section>
+    </main>
+
+    <dialog id="modal" class="modal">
+        <form method="dialog" class="modal-content" id="modalForm"></form>
+    </dialog>
+
+    <script src="js/storage.js"></script>
+    <script src="js/ui.js"></script>
+    <script src="js/modules/dashboard.js"></script>
+    <script src="js/modules/guests.js"></script>
+    <script src="js/modules/vendors.js"></script>
+    <script src="js/modules/budget.js"></script>
+    <script src="js/modules/schedule.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
+
