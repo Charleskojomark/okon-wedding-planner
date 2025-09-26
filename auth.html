@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign In • Wedding Planner</title>
+    <link rel="stylesheet" href="auth.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <section id="auth" class="auth-screen">
+        <div class="auth-brand">
+            <div class="brand-mark">💗</div>
+            <div class="brand-title">Wedding Planner</div>
+        </div>
+        <div class="auth-card">
+            <div class="tabs">
+                <button class="tablink active" data-auth="login">Login</button>
+                <button class="tablink" data-auth="signup">Sign Up</button>
+            </div>
+            <form id="loginForm" class="auth-form" autocomplete="off">
+                <h2 class="auth-title">Welcome Back</h2>
+                <p class="auth-sub">Sign in to continue planning your perfect day</p>
+                <div class="form-row">
+                    <label class="form-label" for="loginEmail">Email</label>
+                    <input id="loginEmail" class="input input-lg" type="email" placeholder="Enter your email" required>
+                </div>
+                <div class="form-row password-row">
+                    <label class="form-label" for="loginPassword">Password</label>
+                    <div class="input-wrap">
+                        <input id="loginPassword" class="input input-lg" type="password" placeholder="Enter your password" required>
+                        <button type="button" class="show-btn" data-target="loginPassword" aria-label="Show password">👁</button>
+                    </div>
+                </div>
+                <button id="loginBtn" class="btn primary block" type="submit">Sign In</button>
+                <div class="switch-auth">Don't have an account? <button type="button" class="link-btn" data-switch="signup">Sign up</button></div>
+            </form>
+            <form id="signupForm" class="auth-form hidden" autocomplete="off">
+                <h2 class="auth-title">Create Your Account</h2>
+                <p class="auth-sub">Join us and start planning your dream wedding</p>
+                <div class="form-row">
+                    <label class="form-label" for="signupName">Full Name</label>
+                    <input id="signupName" class="input input-lg" type="text" placeholder="Enter your full name" required>
+                </div>
+                <div class="form-row">
+                    <label class="form-label" for="signupEmail">Email</label>
+                    <input id="signupEmail" class="input input-lg" type="email" placeholder="Enter your email" required>
+                </div>
+                <div class="form-row password-row">
+                    <label class="form-label" for="signupPassword">Password</label>
+                    <div class="input-wrap">
+                        <input id="signupPassword" class="input input-lg" type="password" placeholder="Create a password (min 8 characters)" required>
+                        <button type="button" class="show-btn" data-target="signupPassword" aria-label="Show password">👁</button>
+                    </div>
+                </div>
+                <div class="form-row password-row">
+                    <label class="form-label" for="signupConfirm">Confirm Password</label>
+                    <div class="input-wrap">
+                        <input id="signupConfirm" class="input input-lg" type="password" placeholder="Confirm your password" required>
+                        <button type="button" class="show-btn" data-target="signupConfirm" aria-label="Show password">👁</button>
+                    </div>
+                </div>
+                <button id="signupBtn" class="btn primary block" type="submit">Create Account</button>
+                <div class="switch-auth">Already have an account? <button type="button" class="link-btn" data-switch="login">Sign in</button></div>
+            </form>
+        </div>
+    </section>
+    <script src="auth.js"></script>
+</body>
+</html>
+

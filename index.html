@@ -10,6 +10,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
+    <!-- Auth is now in auth.html -->
+    <div id="appShell">
     <header class="topbar">
         <button id="brandBtn" class="brand" aria-label="Go to Dashboard">
             <span class="logo" aria-hidden="true">💗</span>
@@ -29,7 +31,9 @@
                     <button id="exportBtn" class="menu-item" role="menuitem">Export</button>
                     <label for="importInput" class="menu-item" role="menuitem">Import</label>
                     <input id="importInput" type="file" accept="application/json" hidden>
-                    <button id="clearAllBtn" class="menu-item danger" role="menuitem">Reset</button>
+                    <button id="clearAllBtn" class="menu-item" role="menuitem">Reset</button>
+                    <hr class="menu-sep">
+                    <button id="logoutBtn" class="menu-item danger" role="menuitem">Logout</button>
                 </div>
             </div>
         </div>
@@ -153,6 +157,7 @@
     <dialog id="modal" class="modal">
         <form method="dialog" class="modal-content" id="modalForm"></form>
     </dialog>
+    </div>
 
     <script src="js/storage.js"></script>
     <script src="js/ui.js"></script>

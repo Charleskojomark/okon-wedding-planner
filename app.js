@@ -1,4 +1,10 @@
 (function () {
+    // Redirect to auth if not logged in
+    try {
+        const user = JSON.parse(localStorage.getItem('cwps:user')||'null');
+        if (!user) { window.location.href = 'auth.html'; return; }
+    } catch (e) { window.location.href = 'auth.html'; return; }
+
     const navLinks = Array.from(document.querySelectorAll('.nav-link'));
     navLinks.forEach(btn => btn.addEventListener('click', () => {
         const tab = btn.getAttribute('data-tab');
@@ -23,6 +29,10 @@
         document.addEventListener('click', (e) => { if (!menuPanel.contains(e.target)) toggleMenu(false); });
         menuPanel.addEventListener('click', (e) => e.stopPropagation());
     }
+
+    // Logout
+    const logoutBtn = document.getElementById('logoutBtn');
+    if (logoutBtn) logoutBtn.addEventListener('click', () => { localStorage.removeItem('cwps:user'); setTimeout(()=> { window.location.href = 'auth.html'; }, 150); });
 
     // Global actions
     document.getElementById('exportBtn').addEventListener('click', () => {
